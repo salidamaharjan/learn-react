@@ -1,30 +1,20 @@
-import { useState } from "react";
-import MyButton from "./MyButton";
-import Profile from "./Profile";
-import LoginForm from "./LoginForm";
-import MyLists from "./MyLists";
-import CounterButton from "./CounterButton";
+import TextField from "./todoComponent/TextField";
+import Button from "./todoComponent/Button";
+import TodoItem from "./todoComponent/TodoItem";
 export default function App() {
-  const isLoggedIn = true;
-  const [count, setCount] = useState(0);
-  function handleClick() {
-    setCount(count + 1)
-  }
   return (
-    <div className="p-4 flex flex-col gap-1">
-      <h1 className="text-green-600">Hello World</h1>
-      {isLoggedIn && <Profile />}
-      {!isLoggedIn && <LoginForm />}
-      <span>
-        <MyButton />
-      </span>
-      <span>
-        <CounterButton onClick={handleClick} count={count}/>
-      </span>
-      <span>
-        <CounterButton onClick={handleClick}count={count}/>
-      </span>
-      <MyLists />
-    </div>
+    <>
+      <div className="flex flex-col justify-center items-center gap-4 p-3 px-16">
+        <h1 className="font-bold text-5xl">TODO LIST</h1>
+        <hr className="border-grey border-2 self-stretch" />
+        <TextField placeholder="Add items..." />
+        <Button className="self-start" label="Add" variant="primary"/>
+        <ul className="self-stretch flex flex-col gap-2">
+          <TodoItem task="Item 1"/>
+          <TodoItem task="Item 2"/>
+          <TodoItem task="Item 3" />
+        </ul>
+      </div>
+    </>
   );
 }
